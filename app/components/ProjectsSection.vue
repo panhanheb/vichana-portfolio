@@ -1,5 +1,6 @@
 <template>
   <section id="projects" class="section section--alt">
+    <KbachFlower class="ornament ornament--tl ornament--spin" />
     <div class="container">
       <div class="projects__top">
         <SectionHeader
@@ -25,8 +26,9 @@
       </div>
 
       <TransitionGroup tag="ul" name="list" class="projects__grid" aria-live="polite">
-        <li v-for="project in filtered" :key="project.id" class="card card--interactive project">
+        <li v-for="(project, i) in filtered" :key="project.id" v-reveal:zoom="(i % 3) * 110" v-spotlight class="card card--interactive project">
           <div class="project__cover" :data-category="project.category" aria-hidden="true">
+            <KbachFlower class="project__flower" />
             <span class="project__monogram">{{ monogram(project.title) }}</span>
           </div>
 
@@ -110,7 +112,7 @@ const monogram = (title: string) =>
   color: var(--text-secondary);
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
@@ -144,19 +146,28 @@ const monogram = (title: string) =>
     var(--bg-subtle);
 }
 
-.project__cover[data-category='Frontend'] { --hue: 215; }
-.project__cover[data-category='Full-stack'] { --hue: 350; }
-.project__cover[data-category='Design'] { --hue: 270; }
+/* Warm hues to match the terracotta + gold theme */
+.project__cover[data-category='Frontend'] { --hue: 40; }
+.project__cover[data-category='Full-stack'] { --hue: 15; }
+.project__cover[data-category='Design'] { --hue: 355; }
 
+/* Gold lattice texture */
 .project__cover::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
-  background-size: 18px 18px;
-  opacity: 0.5;
-  mask-image: linear-gradient(to bottom, #000, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  background: var(--gold);
+  opacity: 0.18;
+  -webkit-mask: var(--lattice) center / 48px 48px repeat;
+  mask: var(--lattice) center / 48px 48px repeat;
+}
+
+.project__flower {
+  position: absolute;
+  width: 46%;
+  height: auto;
+  opacity: 0.22;
+  pointer-events: none;
 }
 
 .project__monogram {

@@ -2,7 +2,8 @@
   <header class="nav" :class="{ 'nav--scrolled': scrolled || menuOpen }">
     <div class="container nav__inner">
       <a href="#home" class="nav__brand" :aria-label="`${profile.name} — home`" @click="menuOpen = false">
-        Port<span class="nav__brand-accent">folio</span>
+        <KbachFlower :size="28" class="nav__flower" />
+        <span>Port<span class="nav__brand-accent">folio</span></span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
@@ -113,6 +114,9 @@ onBeforeUnmount(() => {
 }
 
 .nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.02em;

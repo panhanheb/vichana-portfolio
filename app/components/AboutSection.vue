@@ -1,12 +1,13 @@
 <template>
   <section id="about" class="section section--alt">
+    <KbachFlower class="ornament ornament--br ornament--spin" />
     <div class="container about">
       <div class="about__intro">
         <SectionHeader
           eyebrow="About"
           title="Engineering-minded, design-literate."
         />
-        <div v-reveal class="about__copy">
+        <div v-reveal:left class="about__copy">
           <p>
             I'm a frontend developer based in {{ profile.location }}. Over the past few years I've
             partnered with startups, agencies and independent clients to design and ship products
@@ -25,7 +26,7 @@
       </div>
 
       <ul class="about__principles">
-        <li v-for="(item, i) in principleItems" :key="item.title" v-reveal="i * 80" class="card about__principle">
+        <li v-for="(item, i) in principleItems" :key="item.title" v-reveal:right="i * 120" v-spotlight class="card about__principle">
           <span class="about__icon"><AppIcon :name="item.icon" :size="20" /></span>
           <h3>{{ item.title }}</h3>
           <p>{{ item.text }}</p>

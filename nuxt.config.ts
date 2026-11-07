@@ -19,8 +19,8 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' },
-        { name: 'theme-color', content: '#0a1120', media: '(prefers-color-scheme: dark)' },
+        { name: 'theme-color', content: '#fbf4ea', media: '(prefers-color-scheme: light)' },
+        { name: 'theme-color', content: '#3a1911', media: '(prefers-color-scheme: dark)' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

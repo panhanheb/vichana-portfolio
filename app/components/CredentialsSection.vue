@@ -1,5 +1,6 @@
 <template>
   <section id="credentials" class="section">
+    <KhmerFlower class="ornament ornament--bl ornament--spin-rev" />
     <div class="container">
       <SectionHeader
         eyebrow="Credentials"
@@ -8,7 +9,7 @@
       />
 
       <div class="creds">
-        <div v-reveal class="creds__col">
+        <div v-reveal:left class="creds__col">
           <h3 class="creds__heading">
             <AppIcon name="graduation" :size="18" /> Education
           </h3>
@@ -24,7 +25,7 @@
           </ol>
         </div>
 
-        <div v-reveal="100" class="creds__col">
+        <div v-reveal:right="120" class="creds__col">
           <h3 class="creds__heading">
             <AppIcon name="award" :size="18" /> Certifications
           </h3>

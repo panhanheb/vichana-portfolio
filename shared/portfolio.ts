@@ -60,7 +60,7 @@ export const profile = {
   available: true,
   availability: 'Available for freelance & full-time roles',
   /** Path to a professional headshot in /public (e.g. '/profile.jpg'). Leave empty to show initials. */
-  photo: '',
+  photo: '/profile.webp',
   /** Path to your CV in /public. Leave empty to hide the download button. */
   cv: '',
   siteUrl: 'https://vichna.dev',

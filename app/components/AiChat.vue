@@ -213,7 +213,7 @@ const retry = () => {
   color: var(--accent-contrast);
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   box-shadow: var(--shadow-lg);
   transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
@@ -272,7 +272,7 @@ const retry = () => {
   background: transparent;
   color: var(--text-muted);
   font-size: 12.5px;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
 }
 
 .chat__icon-btn:hover { color: var(--text); background: var(--surface-hover); }
@@ -304,7 +304,7 @@ const retry = () => {
   color: var(--text);
   font-size: 13.5px;
   text-align: left;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 
@@ -334,7 +334,7 @@ const retry = () => {
   color: var(--accent);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   padding: 2px 4px;
 }
 
@@ -389,7 +389,7 @@ const retry = () => {
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--accent-contrast);
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   flex-shrink: 0;
   transition: opacity var(--dur) var(--ease);
 }

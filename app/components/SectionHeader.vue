@@ -1,6 +1,6 @@
 <template>
   <header v-reveal class="section-header" :class="{ 'section-header--center': center }">
-    <span class="eyebrow">{{ eyebrow }}</span>
+    <span class="eyebrow"><KhmerFlower :size="16" />{{ eyebrow }}</span>
     <h2 class="section-header__title">{{ title }}</h2>
     <p v-if="description" class="section-header__desc">{{ description }}</p>
   </header>

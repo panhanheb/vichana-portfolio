@@ -1,5 +1,6 @@
 <template>
   <section id="skills" class="section">
+    <KhmerFlower class="ornament ornament--tr ornament--spin-rev" />
     <div class="container">
       <SectionHeader
         eyebrow="Skills"
@@ -8,7 +9,7 @@
       />
 
       <div class="skills">
-        <article v-for="(group, i) in skillGroups" :key="group.name" v-reveal="i * 80" class="card skills__group">
+        <article v-for="(group, i) in skillGroups" :key="group.name" v-reveal:zoom="i * 140" v-spotlight class="card skills__group">
           <header class="skills__head">
             <span class="skills__index">0{{ i + 1 }}</span>
             <h3>{{ group.name }}</h3>

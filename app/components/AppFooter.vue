@@ -1,10 +1,11 @@
 <template>
-  <footer class="footer">
+  <footer class="footer pattern-lattice">
+    <KhmerFlower class="ornament ornament--tr ornament--spin-rev" />
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
           <a href="#home" class="footer__logo">
-            <span class="footer__mark">{{ profile.initials }}</span>
+            <KbachFlower :size="30" />
             {{ profile.name }}
           </a>
           <p>{{ profile.role }} building fast, accessible products for the web.</p>
@@ -69,17 +70,6 @@ const year = new Date().getFullYear()
 
 .footer__logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text); }
 
-.footer__mark {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: var(--radius-sm);
-  background: var(--text);
-  color: var(--bg);
-  font-size: 11px;
-  font-weight: 700;
-}
 
 .footer__socials { display: flex; gap: 4px; margin-left: -8px; }
 

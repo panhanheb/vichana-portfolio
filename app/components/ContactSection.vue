@@ -1,5 +1,6 @@
 <template>
   <section id="contact" class="section section--alt">
+    <KbachFlower class="ornament ornament--tr ornament--spin" />
     <div class="container contact">
       <div class="contact__info">
         <SectionHeader
@@ -8,7 +9,7 @@
           description="Have a project, role or idea in mind? Send a message and I'll get back to you within one business day."
         />
 
-        <ul v-reveal class="contact__channels">
+        <ul v-reveal:left class="contact__channels">
           <li>
             <a :href="`mailto:${profile.email}`" class="contact__channel">
               <span class="contact__icon"><AppIcon name="mail" /></span>
@@ -39,7 +40,7 @@
         </ul>
       </div>
 
-      <div v-reveal="100" class="card contact__card">
+      <div v-reveal:right="120" class="card contact__card">
         <div v-if="status === 'success'" class="contact__success" role="status">
           <span class="contact__success-icon"><AppIcon name="check-circle" :size="28" /></span>
           <h3>Message sent</h3>
