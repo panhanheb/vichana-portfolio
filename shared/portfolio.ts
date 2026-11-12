@@ -59,8 +59,10 @@ export const profile = {
   email: 'hello@vichna.dev',
   available: true,
   availability: 'Available for freelance & full-time roles',
-  /** Path to a professional headshot in /public (e.g. '/profile.jpg'). Leave empty to show initials. */
-  photo: '/profile.webp',
+  /** Path to a professional headshot in /public (transparent background works best). Leave empty to show initials. */
+  photo: '/profile-1600.webp',
+  /** Optional responsive sizes of the photo (browser picks the best one; up to 4K). */
+  photoSrcset: '/profile-800.webp 800w, /profile-1600.webp 1600w, /profile-3840.webp 3840w',
   /** Path to your CV in /public. Leave empty to hide the download button. */
   cv: '',
   siteUrl: 'https://vichna.dev',

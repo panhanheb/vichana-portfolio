@@ -24,7 +24,18 @@
 
           <div class="hero__ring" aria-hidden="true"></div>
           <div class="hero__blob" @pointerenter="fireBurst">
-            <img v-if="profile.photo" :src="profile.photo" :alt="profile.name" class="hero__photo" />
+            <img
+              v-if="profile.photo"
+              :src="profile.photo"
+              :srcset="profile.photoSrcset || undefined"
+              sizes="(max-width: 900px) 72vw, 420px"
+              :alt="profile.name"
+              class="hero__photo"
+              width="1600"
+              height="1600"
+              fetchpriority="high"
+              decoding="async"
+            />
             <span v-else class="hero__initials" aria-hidden="true">{{ profile.initials }}</span>
           </div>
 
@@ -356,6 +367,12 @@ onBeforeUnmount(() => {
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  /* 2px white outline that follows the cut-out silhouette */
+  filter:
+    drop-shadow(2px 0 0 #fff)
+    drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff)
+    drop-shadow(0 -2px 0 #fff);
 }
 
 .hero__initials {
