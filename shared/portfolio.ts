@@ -44,9 +44,9 @@ export interface SkillGroup {
 }
 
 export const profile = {
-  name: 'Vichna Oudom',
+  name: 'Savin Vichna',
   shortName: 'Vichna',
-  initials: 'VO',
+  initials: 'SV',
   role: 'Frontend Developer',
   roles: ['Frontend Developer', 'Vue & Nuxt Specialist', 'UI Engineer'],
   headline: 'I build fast, accessible and well-crafted web interfaces.',

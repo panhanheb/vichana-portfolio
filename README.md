@@ -1,4 +1,4 @@
-# Vichna Oudom — Portfolio
+# Savin Vichna — Portfolio
 
 Personal portfolio built with **Nuxt 4** and **Vue 3**. It includes a light/dark theme, scroll-aware navigation, a validated contact form, and an AI assistant powered by Google Gemini.
 

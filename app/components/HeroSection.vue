@@ -10,7 +10,7 @@
         </p>
 
         <p class="hero__kicker enter" style="--d: 60ms">
-          {{ profile.name }} <span aria-hidden="true">·</span> {{ profile.role }}
+          <strong class="hero__name">{{ profile.name }}</strong> <span aria-hidden="true">·</span> {{ profile.role }}
         </p>
         <h1 class="hero__title enter" style="--d: 120ms">{{ profile.headline }}</h1>
         <p class="hero__lead enter" style="--d: 180ms">{{ profile.summary }}</p>
@@ -128,6 +128,7 @@ const heroStats = [...stats, { value: `${techCount}+`, label: 'Technologies used
 }
 
 .hero__kicker span { margin: 0 4px; }
+.hero__name { font-weight: 700; color: var(--text); }
 
 .hero__title {
   font-size: clamp(36px, 5.2vw, 58px);
