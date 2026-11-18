@@ -1,6 +1,5 @@
 <template>
   <section id="skills" class="section">
-    <KhmerFlower class="ornament ornament--tr ornament--spin-rev" />
     <div class="container">
       <SectionHeader
         eyebrow="Skills"
@@ -9,17 +8,14 @@
       />
 
       <div class="skills">
-        <article v-for="(group, i) in skillGroups" :key="group.name" v-reveal:zoom="i * 140" v-spotlight class="card skills__group">
+        <article v-for="(group, i) in skillGroups" :key="group.name" v-reveal="i * 80" class="card skills__group">
           <header class="skills__head">
-            <span class="skills__index">0{{ i + 1 }}</span>
+            <span class="skills__icon"><AppIcon :name="icons[i % icons.length]!" :size="18" /></span>
             <h3>{{ group.name }}</h3>
             <p>{{ group.description }}</p>
           </header>
-          <ul class="skills__list">
-            <li v-for="item in group.items" :key="item">
-              <AppIcon name="check" :size="16" class="skills__check" />
-              {{ item }}
-            </li>
+          <ul class="skills__list" :aria-label="`${group.name} skills`">
+            <li v-for="item in group.items" :key="item" class="tag">{{ item }}</li>
           </ul>
         </article>
       </div>
@@ -29,6 +25,8 @@
 
 <script setup lang="ts">
 import { skillGroups } from '#shared/portfolio'
+
+const icons = ['code', 'layers', 'sparkles']
 </script>
 
 <style scoped>
@@ -40,36 +38,33 @@ import { skillGroups } from '#shared/portfolio'
 
 .skills__group { padding: 28px; display: flex; flex-direction: column; gap: 24px; }
 
-.skills__head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.skills__head { display: flex; flex-direction: column; gap: 6px; }
 
-.skills__index {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--accent);
-  margin-bottom: 6px;
+.skills__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent-text);
 }
 
-.skills__head h3 { font-size: 18px; }
+.skills__head h3 { font-size: 17px; }
 .skills__head p { font-size: 14.5px; }
 
 .skills__list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 16px;
-}
-
-.skills__list li {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  font-size: 14.5px;
-  color: var(--text);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
 }
 
-.skills__check { color: var(--accent); flex-shrink: 0; }
+.skills__list .tag { height: 30px; padding: 0 12px; font-size: 13.5px; color: var(--text); }
 
 @media (max-width: 960px) {
   .skills { grid-template-columns: 1fr; }
-  .skills__list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 }
 </style>

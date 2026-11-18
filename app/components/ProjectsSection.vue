@@ -1,6 +1,5 @@
 <template>
   <section id="projects" class="section section--alt">
-    <KbachFlower class="ornament ornament--tl ornament--spin" />
     <div class="container">
       <div class="projects__top">
         <SectionHeader
@@ -26,21 +25,21 @@
       </div>
 
       <TransitionGroup tag="ul" name="list" class="projects__grid" aria-live="polite">
-        <li v-for="(project, i) in filtered" :key="project.id" v-reveal:zoom="(i % 3) * 110" v-spotlight class="card card--interactive project">
+        <li v-for="(project, i) in filtered" :key="project.id" v-reveal="(i % 3) * 80" class="card card--interactive project">
           <div class="project__cover" :data-category="project.category" aria-hidden="true">
-            <KbachFlower class="project__flower" />
             <span class="project__monogram">{{ monogram(project.title) }}</span>
+            <span class="project__year">{{ project.year }}</span>
           </div>
 
           <div class="project__body">
-            <div class="project__meta">
-              <span>{{ project.category }}</span>
-              <span aria-hidden="true">·</span>
-              <span>{{ project.year }}</span>
-            </div>
+            <p class="project__category">{{ project.category }}</p>
             <h3 class="project__title">{{ project.title }}</h3>
             <p class="project__summary">{{ project.summary }}</p>
-            <p class="project__role"><span>Role</span> {{ project.role }}</p>
+
+            <dl class="project__role">
+              <dt>Role</dt>
+              <dd>{{ project.role }}</dd>
+            </dl>
 
             <ul class="project__stack" aria-label="Technologies">
               <li v-for="tech in project.stack" :key="tech" class="tag">{{ tech }}</li>
@@ -50,7 +49,7 @@
               <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener noreferrer" class="link">
                 Live demo <AppIcon name="arrow-up-right" :size="15" />
               </a>
-              <a v-if="project.repo" :href="project.repo" target="_blank" rel="noopener noreferrer" class="link">
+              <a v-if="project.repo" :href="project.repo" target="_blank" rel="noopener noreferrer" class="link link--muted">
                 <AppIcon name="github" :size="15" /> Source
               </a>
             </div>
@@ -93,26 +92,27 @@ const monogram = (title: string) =>
 
 .projects__filters {
   display: inline-flex;
-  gap: 4px;
-  padding: 4px;
+  gap: 2px;
+  padding: 3px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .projects__filter {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 34px;
+  height: 32px;
   padding: 0 12px;
   border: 0;
-  border-radius: var(--radius-sm);
+  border-radius: 7px;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
-  cursor: var(--cursor-pointer);
+  white-space: nowrap;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
@@ -122,7 +122,7 @@ const monogram = (title: string) =>
 .projects__count {
   font-family: var(--font-mono);
   font-size: 11px;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .projects__grid {
@@ -134,96 +134,90 @@ const monogram = (title: string) =>
 .project { display: flex; flex-direction: column; overflow: hidden; }
 
 .project__cover {
-  --hue: 350;
+  --tint: var(--accent);
   position: relative;
   aspect-ratio: 16 / 9;
   display: grid;
   place-items: center;
   border-bottom: 1px solid var(--border);
   background:
-    radial-gradient(circle at 25% 20%, hsl(var(--hue) 80% 60% / 0.18), transparent 55%),
-    radial-gradient(circle at 80% 90%, hsl(calc(var(--hue) + 40) 70% 60% / 0.14), transparent 50%),
+    radial-gradient(70% 90% at 50% 110%, color-mix(in srgb, var(--tint) 22%, transparent), transparent 70%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
     var(--bg-subtle);
 }
 
-/* Warm hues to match the terracotta + gold theme */
-.project__cover[data-category='Frontend'] { --hue: 40; }
-.project__cover[data-category='Full-stack'] { --hue: 15; }
-.project__cover[data-category='Design'] { --hue: 355; }
-
-/* Gold lattice texture */
-.project__cover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  opacity: 0.18;
-  -webkit-mask: var(--lattice) center / 48px 48px repeat;
-  mask: var(--lattice) center / 48px 48px repeat;
-}
-
-.project__flower {
-  position: absolute;
-  width: 46%;
-  height: auto;
-  opacity: 0.22;
-  pointer-events: none;
-}
+.project__cover[data-category='Frontend'] { --tint: #2563eb; }
+.project__cover[data-category='Full-stack'] { --tint: #0d9488; }
+.project__cover[data-category='Design'] { --tint: #7c3aed; }
 
 .project__monogram {
-  position: relative;
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-lg);
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 650;
   letter-spacing: -0.02em;
   color: var(--text);
-  transition: transform 300ms var(--ease);
+  transition: transform 260ms var(--ease);
 }
 
-.project:hover .project__monogram { transform: scale(1.06); }
+.project:hover .project__monogram { transform: translateY(-3px); }
+
+.project__year {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
 
 .project__body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   padding: 22px 24px 24px;
 }
 
-.project__meta {
-  display: flex;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
+.project__category {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--accent-text);
 }
 
-.project__title { font-size: 18px; }
+.project__title { font-size: 18px; letter-spacing: -0.015em; }
 .project__summary { font-size: 14.5px; line-height: 1.65; }
 
-.project__role { font-size: 13.5px; color: var(--text-secondary); }
-.project__role span { color: var(--text-muted); margin-right: 4px; }
+.project__role { display: flex; gap: 6px; font-size: 13.5px; margin-top: 2px; }
+.project__role dt { color: var(--text-muted); }
+.project__role dd { color: var(--text-secondary); }
 
-.project__stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.project__stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 
 .project__links {
   display: flex;
   gap: 20px;
   margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
+  padding-top: 18px;
 }
 
+.project__stack + .project__links { margin-top: 18px; border-top: 1px solid var(--border); }
+.link--muted { color: var(--text-secondary); }
+
 /* Filter animation */
-.list-move, .list-enter-active, .list-leave-active { transition: all 300ms var(--ease); }
-.list-enter-from, .list-leave-to { opacity: 0; transform: scale(0.97); }
+.list-move, .list-enter-active, .list-leave-active { transition: all 280ms var(--ease); }
+.list-enter-from, .list-leave-to { opacity: 0; transform: scale(0.98); }
 .list-leave-active { position: absolute; visibility: hidden; }
 
 @media (max-width: 1024px) {

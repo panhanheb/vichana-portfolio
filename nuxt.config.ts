@@ -19,8 +19,8 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'theme-color', content: '#fbf4ea', media: '(prefers-color-scheme: light)' },
-        { name: 'theme-color', content: '#3a1911', media: '(prefers-color-scheme: dark)' },
+        { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' },
+        { name: 'theme-color', content: '#09090b', media: '(prefers-color-scheme: dark)' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -33,9 +33,9 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // Apply saved theme before first paint to avoid a flash.
+          // Apply a saved theme before first paint to avoid a flash; otherwise follow the OS setting.
           innerHTML:
-            "var d=document.documentElement;d.dataset.theme='dark';try{var t=localStorage.getItem('theme');if(t==='light')d.dataset.theme=t}catch(e){}",
+            "try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}",
           tagPosition: 'head',
         },
       ],

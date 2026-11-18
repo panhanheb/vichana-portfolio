@@ -33,7 +33,7 @@ onBeforeUnmount(() => {
 .scroll-progress {
   position: fixed;
   inset: 0 0 auto 0;
-  height: 3px;
+  height: 2px;
   z-index: 1100;
   pointer-events: none;
 }
@@ -41,7 +41,6 @@ onBeforeUnmount(() => {
 .scroll-progress__bar {
   height: 100%;
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent);
+  background: var(--accent);
 }
 </style>

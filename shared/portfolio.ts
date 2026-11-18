@@ -60,9 +60,9 @@ export const profile = {
   available: true,
   availability: 'Available for freelance & full-time roles',
   /** Path to a professional headshot in /public (transparent background works best). Leave empty to show initials. */
-  photo: '/profile-1600.webp',
-  /** Optional responsive sizes of the photo (browser picks the best one; up to 4K). */
-  photoSrcset: '/profile-800.webp 800w, /profile-1600.webp 1600w, /profile-3840.webp 3840w',
+  photo: '/portrait-1254.webp',
+  /** Optional responsive sizes of the photo (browser picks the best one). */
+  photoSrcset: '/portrait-640.webp 640w, /portrait-1254.webp 1254w',
   /** Path to your CV in /public. Leave empty to hide the download button. */
   cv: '',
   siteUrl: 'https://vichna.dev',

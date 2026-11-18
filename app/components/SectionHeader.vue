@@ -1,6 +1,6 @@
 <template>
   <header v-reveal class="section-header" :class="{ 'section-header--center': center }">
-    <span class="eyebrow"><KhmerFlower :size="16" />{{ eyebrow }}</span>
+    <span class="eyebrow">{{ eyebrow }}</span>
     <h2 class="section-header__title">{{ title }}</h2>
     <p v-if="description" class="section-header__desc">{{ description }}</p>
   </header>
@@ -16,7 +16,7 @@ defineProps<{ eyebrow: string; title: string; description?: string; center?: boo
   margin-bottom: 56px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .section-header--center {
@@ -26,7 +26,11 @@ defineProps<{ eyebrow: string; title: string; description?: string; center?: boo
 }
 
 .section-header__title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  text-wrap: balance;
 }
 
 .section-header__desc {

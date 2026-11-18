@@ -1,7 +1,6 @@
 <template>
   <main id="main">
     <HeroSection />
-    <TechScroller />
     <AboutSection />
     <SkillsSection />
     <ProjectsSection />

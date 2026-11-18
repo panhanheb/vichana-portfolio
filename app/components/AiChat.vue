@@ -213,7 +213,7 @@ const retry = () => {
   color: var(--accent-contrast);
   font-size: 14px;
   font-weight: 500;
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
@@ -251,7 +251,7 @@ const retry = () => {
   height: 34px;
   border-radius: 50%;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   flex-shrink: 0;
 }
 
@@ -272,7 +272,7 @@ const retry = () => {
   background: transparent;
   color: var(--text-muted);
   font-size: 12.5px;
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
 }
 
 .chat__icon-btn:hover { color: var(--text); background: var(--surface-hover); }
@@ -304,7 +304,7 @@ const retry = () => {
   color: var(--text);
   font-size: 13.5px;
   text-align: left;
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 
@@ -317,7 +317,7 @@ const retry = () => {
 .chat__bubble {
   max-width: 85%;
   padding: 9px 13px;
-  border-radius: 14px;
+  border-radius: 12px;
   font-size: 14px;
   line-height: 1.55;
   white-space: pre-wrap;
@@ -325,16 +325,16 @@ const retry = () => {
 }
 
 .chat__msg--assistant .chat__bubble { background: var(--bg-subtle); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
-.chat__msg--user .chat__bubble { background: var(--text); color: var(--bg); border-bottom-right-radius: 4px; }
+.chat__msg--user .chat__bubble { background: var(--accent); color: var(--accent-contrast); border-bottom-right-radius: 4px; }
 .chat__bubble--error { color: var(--danger) !important; border-color: color-mix(in srgb, var(--danger) 30%, transparent) !important; }
 
 .chat__retry {
   border: 0;
   background: none;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 13px;
   font-weight: 500;
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   padding: 2px 4px;
 }
 
@@ -389,7 +389,7 @@ const retry = () => {
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--accent-contrast);
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   flex-shrink: 0;
   transition: opacity var(--dur) var(--ease);
 }

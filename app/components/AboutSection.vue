@@ -1,13 +1,12 @@
 <template>
   <section id="about" class="section section--alt">
-    <KbachFlower class="ornament ornament--br ornament--spin" />
     <div class="container about">
       <div class="about__intro">
         <SectionHeader
           eyebrow="About"
           title="Engineering-minded, design-literate."
         />
-        <div v-reveal:left class="about__copy">
+        <div v-reveal class="about__copy">
           <p>
             I'm a frontend developer based in {{ profile.location }}. Over the past few years I've
             partnered with startups, agencies and independent clients to design and ship products
@@ -26,10 +25,12 @@
       </div>
 
       <ul class="about__principles">
-        <li v-for="(item, i) in principleItems" :key="item.title" v-reveal:right="i * 120" v-spotlight class="card about__principle">
-          <span class="about__icon"><AppIcon :name="item.icon" :size="20" /></span>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
+        <li v-for="(item, i) in principleItems" :key="item.title" v-reveal="i * 80" class="about__principle">
+          <span class="about__icon"><AppIcon :name="item.icon" :size="18" /></span>
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -47,7 +48,7 @@ const principleItems = principles.map((p, i) => ({ ...p, icon: icons[i % icons.l
 .about {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 64px;
+  gap: 80px;
   align-items: start;
 }
 
@@ -64,31 +65,33 @@ const principleItems = principles.map((p, i) => ({ ...p, icon: icons[i % icons.l
 .about__copy .link { margin-top: 6px; }
 
 .about__principles {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .about__principle {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 16px;
-  row-gap: 4px;
+  display: flex;
+  gap: 16px;
   padding: 24px;
 }
 
+.about__principle + .about__principle { border-top: 1px solid var(--border); }
+
 .about__icon {
-  grid-row: span 2;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius);
-  background: var(--accent-soft);
-  color: var(--accent);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--accent-text);
+  flex-shrink: 0;
 }
 
-.about__principle h3 { font-size: 16px; }
+.about__principle h3 { font-size: 16px; margin-bottom: 4px; }
 .about__principle p { font-size: 15px; line-height: 1.6; }
 
 @media (max-width: 900px) {

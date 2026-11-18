@@ -63,6 +63,7 @@ const model = defineModel<string>({ required: true })
   height: 44px;
   padding: 0 14px;
   border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--text);
@@ -73,7 +74,7 @@ const model = defineModel<string>({ required: true })
 
 .field__control--area { height: auto; min-height: 140px; padding: 12px 14px; resize: vertical; line-height: 1.6; }
 .field__control::placeholder { color: var(--text-muted); opacity: 0.8; }
-.field__control:hover { border-color: var(--text-muted); }
+.field__control:hover { border-color: color-mix(in srgb, var(--text-muted) 55%, var(--border-strong)); }
 .field__control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--ring); }
 
 .field--error .field__control { border-color: var(--danger); }

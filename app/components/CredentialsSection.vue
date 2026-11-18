@@ -1,6 +1,5 @@
 <template>
   <section id="credentials" class="section">
-    <KhmerFlower class="ornament ornament--bl ornament--spin-rev" />
     <div class="container">
       <SectionHeader
         eyebrow="Credentials"
@@ -9,9 +8,9 @@
       />
 
       <div class="creds">
-        <div v-reveal:left class="creds__col">
+        <div v-reveal class="creds__col">
           <h3 class="creds__heading">
-            <AppIcon name="graduation" :size="18" /> Education
+            <AppIcon name="graduation" :size="17" /> Education
           </h3>
           <ol class="timeline">
             <li v-for="item in education" :key="item.degree" class="timeline__item">
@@ -25,15 +24,16 @@
           </ol>
         </div>
 
-        <div v-reveal:right="120" class="creds__col">
+        <div v-reveal="80" class="creds__col">
           <h3 class="creds__heading">
-            <AppIcon name="award" :size="18" /> Certifications
+            <AppIcon name="award" :size="17" /> Certifications
           </h3>
           <ul class="certs">
             <li v-for="cert in certificates" :key="cert.title" class="cert">
+              <span class="cert__badge" aria-hidden="true">{{ cert.issuer.slice(0, 1) }}</span>
               <div class="cert__main">
                 <h4 class="cert__title">{{ cert.title }}</h4>
-                <p class="cert__issuer">{{ cert.issuer }} · {{ cert.year }}</p>
+                <p class="cert__issuer">{{ cert.issuer }} <span aria-hidden="true">·</span> {{ cert.year }}</p>
                 <p class="cert__skills">{{ cert.skills.join(' · ') }}</p>
               </div>
               <a
@@ -41,10 +41,10 @@
                 :href="cert.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="icon-btn cert__link"
+                class="cert__link"
                 :aria-label="`View ${cert.title} certificate`"
               >
-                <AppIcon name="external" :size="16" />
+                <AppIcon name="arrow-up-right" :size="16" />
               </a>
             </li>
           </ul>
@@ -61,7 +61,7 @@ import { certificates, education } from '#shared/portfolio'
 <style scoped>
 .creds {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 64px;
 }
 
@@ -69,34 +69,34 @@ import { certificates, education } from '#shared/portfolio'
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  padding-bottom: 16px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  margin-bottom: 20px;
 }
 
-.creds__heading :deep(svg) { color: var(--accent); }
+.creds__heading :deep(svg) { color: var(--accent-text); }
 
 /* Timeline */
-.timeline { list-style: none; position: relative; padding-left: 24px; }
+.timeline { position: relative; padding-left: 28px; }
 
 .timeline::before {
   content: '';
   position: absolute;
   left: 5px;
-  top: 30px;
-  bottom: 30px;
+  top: 8px;
+  bottom: 8px;
   width: 1px;
-  background: var(--border-strong);
+  background: var(--border);
 }
 
-.timeline__item { position: relative; padding: 20px 0; }
+.timeline__item { position: relative; padding-bottom: 32px; }
+.timeline__item:last-child { padding-bottom: 0; }
 
 .timeline__dot {
   position: absolute;
-  left: -24px;
-  top: 26px;
+  left: -28px;
+  top: 5px;
   width: 11px;
   height: 11px;
   border-radius: 50%;
@@ -104,35 +104,69 @@ import { certificates, education } from '#shared/portfolio'
   border: 2px solid var(--border-strong);
 }
 
-.timeline__item:first-child .timeline__dot { border-color: var(--accent); background: var(--accent); }
+.timeline__item:first-child .timeline__dot {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
 
 .timeline__period {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .timeline__title { font-size: 16.5px; margin-bottom: 2px; }
 .timeline__sub { font-size: 14.5px; }
 
 /* Certificates */
-.certs { display: flex; flex-direction: column; }
+.certs {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
 
 .cert {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
+  gap: 14px;
+  padding: 16px 18px;
 }
 
-.cert:last-child { border-bottom: 0; }
+.cert + .cert { border-top: 1px solid var(--border); }
+
+.cert__badge {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
 .cert__main { flex: 1; min-width: 0; }
-.cert__title { font-size: 15.5px; }
-.cert__issuer { font-size: 14px; color: var(--text-secondary); }
-.cert__skills { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-.cert__link { width: 36px; height: 36px; }
+.cert__title { font-size: 15px; font-weight: 600; }
+.cert__issuer { font-size: 13.5px; color: var(--text-secondary); }
+.cert__skills { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+
+.cert__link {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.cert__link:hover { color: var(--text); background: var(--surface-hover); }
 
 @media (max-width: 900px) {
   .creds { grid-template-columns: 1fr; gap: 48px; }

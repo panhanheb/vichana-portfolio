@@ -1,11 +1,10 @@
 <template>
-  <footer class="footer pattern-lattice">
-    <KhmerFlower class="ornament ornament--tr ornament--spin-rev" />
+  <footer class="footer">
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
           <a href="#home" class="footer__logo">
-            <KbachFlower :size="30" />
+            <span class="footer__mark" aria-hidden="true">{{ profile.initials }}</span>
             {{ profile.name }}
           </a>
           <p>{{ profile.role }} building fast, accessible products for the web.</p>
@@ -68,8 +67,19 @@ const year = new Date().getFullYear()
 .footer__brand { display: flex; flex-direction: column; gap: 14px; }
 .footer__brand p { font-size: 14.5px; max-width: 300px; }
 
-.footer__logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text); }
+.footer__logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: var(--text); }
 
+.footer__mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+}
 
 .footer__socials { display: flex; gap: 4px; margin-left: -8px; }
 
@@ -86,17 +96,15 @@ const year = new Date().getFullYear()
 .footer__social:hover { color: var(--text); background: var(--surface-hover); }
 
 .footer__col h4 {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--text);
   margin-bottom: 16px;
 }
 
 .footer__col ul { display: flex; flex-direction: column; gap: 10px; }
-.footer__col li { font-size: 14.5px; color: var(--text-secondary); word-break: break-word; }
+.footer__col li { font-size: 14px; color: var(--text-secondary); word-break: break-word; }
 .footer__col a { transition: color var(--dur) var(--ease); }
 .footer__col a:hover { color: var(--text); }
 
@@ -109,7 +117,7 @@ const year = new Date().getFullYear()
   border-top: 1px solid var(--border);
 }
 
-.footer__bottom p { font-size: 13.5px; color: var(--text-muted); }
+.footer__bottom p { font-size: 13px; color: var(--text-muted); }
 
 @media (max-width: 900px) {
   .footer__top { grid-template-columns: 1fr 1fr; }

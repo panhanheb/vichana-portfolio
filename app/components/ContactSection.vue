@@ -1,6 +1,5 @@
 <template>
   <section id="contact" class="section section--alt">
-    <KbachFlower class="ornament ornament--tr ornament--spin" />
     <div class="container contact">
       <div class="contact__info">
         <SectionHeader
@@ -9,7 +8,7 @@
           description="Have a project, role or idea in mind? Send a message and I'll get back to you within one business day."
         />
 
-        <ul v-reveal:left class="contact__channels">
+        <ul v-reveal class="contact__channels">
           <li>
             <a :href="`mailto:${profile.email}`" class="contact__channel">
               <span class="contact__icon"><AppIcon name="mail" /></span>
@@ -40,7 +39,7 @@
         </ul>
       </div>
 
-      <div v-reveal:right="120" class="card contact__card">
+      <div v-reveal="80" class="card contact__card">
         <div v-if="status === 'success'" class="contact__success" role="status">
           <span class="contact__success-icon"><AppIcon name="check-circle" :size="28" /></span>
           <h3>Message sent</h3>
@@ -74,7 +73,7 @@
             <span>{{ serverError }} You can also email <a :href="`mailto:${profile.email}`">{{ profile.email }}</a>.</span>
           </p>
 
-          <button type="submit" class="btn btn--accent btn--block" :disabled="status === 'sending'">
+          <button type="submit" class="btn btn--primary btn--block" :disabled="status === 'sending'">
             <span v-if="status === 'sending'" class="spinner" aria-hidden="true"></span>
             <AppIcon v-else name="send" :size="16" />
             {{ status === 'sending' ? 'Sending…' : 'Send message' }}
@@ -143,13 +142,13 @@ const reset = () => { status.value = 'idle' }
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: 64px;
+  gap: 72px;
   align-items: start;
 }
 
 .contact__info :deep(.section-header) { margin-bottom: 36px; }
 
-.contact__channels { display: flex; flex-direction: column; gap: 8px; }
+.contact__channels { display: flex; flex-direction: column; gap: 4px; }
 
 .contact__channel {
   display: flex;
@@ -161,17 +160,17 @@ const reset = () => { status.value = 'idle' }
   transition: background var(--dur) var(--ease);
 }
 
-a.contact__channel:hover { background: var(--surface-hover); }
+a.contact__channel:hover { background: var(--surface); box-shadow: var(--shadow-sm); }
 
 .contact__icon {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface);
-  color: var(--text-secondary);
+  color: var(--accent-text);
   flex-shrink: 0;
 }
 
@@ -190,8 +189,9 @@ a.contact__channel:hover { background: var(--surface-hover); }
   gap: 10px;
   align-items: flex-start;
   padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--danger) 25%, transparent);
   border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
   color: var(--danger);
   font-size: 14px;
 }
@@ -215,7 +215,7 @@ a.contact__channel:hover { background: var(--surface-hover); }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 10px;
   padding: 40px 8px;
 }
 
@@ -227,11 +227,11 @@ a.contact__channel:hover { background: var(--surface-hover); }
   border-radius: 50%;
   background: color-mix(in srgb, var(--success) 12%, transparent);
   color: var(--success);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .contact__success h3 { font-size: 20px; }
-.contact__success .btn { margin-top: 12px; }
+.contact__success .btn { margin-top: 14px; }
 
 @media (max-width: 900px) {
   .contact { grid-template-columns: 1fr; gap: 40px; }
